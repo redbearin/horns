@@ -2,8 +2,8 @@
 
 function Creature(creature) {
   this.title = creature.title;
-  this.img_url = creature.img_url;
-  this.description = creature.desciption;
+  this.image_url = creature.image_url;
+  this.description = creature.description;
   this.keyword = creature.keyword;
   this.horns = creature.horns;
 }
@@ -19,9 +19,25 @@ Creature.prototype.render = function() {
   creatureClone.html(creatureHtml);
 
   creatureClone.find('h2').text(this.title);
-  creatureClone.find('img').text(this.img_url);
+  creatureClone.find('img').attr('src', this.image_url);
+  creatureClone.find('img').attr('alt', this.keyword);
   creatureClone.find('p').text(this.description);
-  creatureClone.find('h3').text(this.description);  
-
-  
+  creatureClone.removeClass('clone');
+  creatureClone.attr('class', this.title);
 }
+
+Creature.readJson = () => {
+  $.get('page-1.json', 'json')
+    .then (data => {
+      data.forEach(item => {
+        Creature.allCreatures.push(new Creature(item));
+      })
+    })
+    .then(Creature.loadCreatures);
+}
+
+Creature.loadCreatures = () => {
+  Creature.allCreatures.forEach(creature => creature.render())
+}
+
+$(() => Creature.readJson());
