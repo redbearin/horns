@@ -1,37 +1,55 @@
+# Lab 02: jQuery Selectors and Events
 
-Number and name of feature: #1 Display Images
+## Configuration
 
-Estimate of time needed to complete: 1 hour
+_Your repository must include the following config files:_
+- `README.md` - with an overview of the project for a new visitor to your repo
+- `.gitignore` - with standard NodeJS configurations (see the provided `.gitignore` file)
+- `.eslintrc.json` - with Code 301 course standards for the linter (see the provided `.eslintrc.json` file)
 
-Start time: 9:45 am
+- Organize your files into folders as you see fit. Here is an example file tree:
 
-Finish time: 10:45 am
+```sh
+lab-02-repository
+├── .eslintrc.json
+├── .gitignore
+├── css
+│   ├── reset.css
+│   └── styles.css
+├── data
+│   └── page-1.json
+├── index.html
+├── js
+│    └── app.js
+└── README.md
+```
+
+## User Acceptance Tests
+
+### Overview
+
+In labs 2 and 3, you and your partner(s) will be using the provided JSON files to create a photo gallery. You will style it using floats.
+
+You have the option of using the provided `index.html` file, but it is not a requirement.
+
+### Time Estimate
+
+For each of the features listed below, make an estimate of the time it will take you to complete the feature, and record your start and finish times for that feature:
+
+```
+Number and name of feature: ________________________________
+
+Estimate of time needed to complete: _____
+
+Start time: _____
+
+Finish time: _____
 
 Actual time needed to complete: _____
+```
 
+Add this information to your README.
 
-Number and name of feature: #2 Filter Images
-
-Estimate of time needed to complete: 1 hour
-
-Start time: 10:45
-
-Finish time: 11:45
-
-Actual time needed to complete: _____
-
-Number and name of feature: # Style
-
-Estimate of time needed to complete: 1 hour
-
-Start time: 11:45
-
-Finish time: 12:45
-
-Actual time needed to complete: _____
-
-User Story
-copied from the lab md
 ### Feature #1: Display images
 
 #### Why are we implementing this feature?
