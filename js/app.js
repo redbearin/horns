@@ -1,22 +1,48 @@
 'use strict';
-/*Rendering images to HTML*/
-function Creature(creature) {
-  this.title = creature.title;
-  this.image_url = creature.image_url;
-  this.description = creature.description;
-  this.keyword = creature.keyword;
-  this.horns = creature.horns;
-}
 
 var allCreatures = [];
-
 var keywords = [];
+/*Rendering images to HTML*/
+function Creature(animal) {
+  this.title = animal.title;
+  this.image_url = animal.image_url;
+  this.description = animal.description;
+  this.keyword = animal.keyword;
+  this.horns = animal.horns;
+  allCreatures.push(this);
+}
+
+
+Creature.loadCreatures = () => {
+  console.log(allCreatures);
+  allCreatures.forEach(creature => creature.render())
+}
+
+
+function readJson (){
+  $.get('page-1.json', data => {
+    data.forEach(item => {
+      new Creature(item);
+    });
+  }).then(Creature.loadCreatures);
+}
 
 function checkKeywords() {
-  allCreatures.forEach(object =>{
-    if (!keywords.includes(object.keyword)){
-      keywords.push(object.keyword);
-    }});
+  console.log('all creatures array', allCreatures);
+  // allCreatures.forEach( obj => {
+  //   console.log('hi', obj);
+  //   if (!keywords.includes(obj.keyword)){
+  //     keywords.push(obj.keyword);
+  //   }
+  // });
+  for(let i = 0; i < allCreatures.length; i++){
+    console.log(allCreatures[i]);
+
+    if(!keywords.includes(allCreatures[i].keyword)){
+      keywords.push(allCreatures[i].keyword);
+    }
+  }
+  console.log('keywords array', keywords);
 }
 
 function options() {
@@ -48,24 +74,14 @@ Creature.prototype.render = function() {
   creatureClone.attr('class', this.title);
 }
 
-Creature.readJson = () => {
-  $.get('page-1.json', 'json')
-    .then (data => {
-      data.forEach(item => {
-        allCreatures.push(new Creature(item));
-      })
-    })
-    .then(Creature.loadCreatures);
-}
 
-Creature.loadCreatures = () => {
-  allCreatures.forEach(creature => creature.render())
-}
+
+
+
+readJson();
 
 checkKeywords();
 options();
-
-$(() => Creature.readJson());
 
 /*------------------------------------------------------------------------------------------------------------------------------*/
 /*Drop down selector 'Keywords'*/
