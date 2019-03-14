@@ -16,9 +16,9 @@ Estimate of time needed to complete: 1 hour
 
 Start time: 11:50
 
-Finish time: 11:45
+Finish time: 1:50pm
 
-Actual time needed to complete: _____
+Actual time needed to complete: 2 hours on Wed and 1 hour on Thursday.
 
 Number and name of feature: # Style
 
