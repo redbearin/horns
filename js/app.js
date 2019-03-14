@@ -1,34 +1,51 @@
 'use strict';
-/*Rendering images to HTML*/
-function Creature(creature) {
-  this.title = creature.title;
-  this.image_url = creature.image_url;
-  this.description = creature.description;
-  this.keyword = creature.keyword;
-  this.horns = creature.horns;
-}
 
 var allCreatures = [];
-
 var keywords = [];
+/*Rendering images to HTML*/
+function Creature(animal) {
+  this.title = animal.title;
+  this.image_url = animal.image_url;
+  this.description = animal.description;
+  this.keyword = animal.keyword;
+  this.horns = animal.horns;
+}
 
-function checkKeywords() {
-  allCreatures.forEach(object =>{
-    if (!keywords.includes(object.keyword)){
-      keywords.push(object.keyword);
-    }});
+
+Creature.loadCreatures = () => {
+  console.log('loadCreatures function',allCreatures);
+  allCreatures.forEach(creature => creature.render());
+  checkKeywords();
+}
+
+
+function readJson (){
+  $.get('page-1.json', data => {
+    data.forEach(item => {
+      allCreatures.push(new Creature(item));
+    });
+  }).then(Creature.loadCreatures)
+    .then(checkKeywords)
+    .then(options);
+}
+
+let checkKeywords = function() {
+
+  if (allCreatures.length !== 0) {
+    for(let i = 0; i < allCreatures.length; i++){
+      if(!keywords.includes(allCreatures[i].keyword)){
+        keywords.push(allCreatures[i].keyword);
+      }
+    }
+  }
 }
 
 function options() {
-  for(let i=0; i<keywords.length; i++){
-    $('select').append('<option class="clone"></option>');
-    let optionClone = $('<option[class="clone"]');
-    let optionHtml = $('#option-template').html();
-    optionClone.html(optionHtml);
+  console.log('creatures', allCreatures);
+  console.log('keywords', keywords);
 
-    optionClone.find('option').text(keywords[i]);
-    optionClone.removeClass('clone');
-    optionClone.attr('class', keywords[i]);
+  for(let i=0; i<keywords.length; i++){
+    $('select').append(`<option value="${keywords[i]}">${keywords[i]}</option>`);
   }
 }
 
@@ -48,33 +65,13 @@ Creature.prototype.render = function() {
   creatureClone.attr('class', this.title);
 }
 
-Creature.readJson = () => {
-  $.get('page-1.json', 'json')
-    .then (data => {
-      data.forEach(item => {
-        allCreatures.push(new Creature(item));
-      })
-    })
-    .then(Creature.loadCreatures);
-}
 
-Creature.loadCreatures = () => {
-  allCreatures.forEach(creature => creature.render())
-}
+
+
+
+readJson();
 
 checkKeywords();
-options();
-
-$(() => Creature.readJson());
 
 /*------------------------------------------------------------------------------------------------------------------------------*/
-/*Drop down selector 'Keywords'*/
 
-
-
-// $('select[title="Creature"]').on('change', function ()
-// {
-//   let $selection = $(this).val();
-//   $('img').hide()
-//   $('img')
-// })
