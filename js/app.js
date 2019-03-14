@@ -62,16 +62,17 @@ Creature.prototype.render = function() {
   creatureClone.find('img').attr('alt', this.keyword);
   creatureClone.find('p').text(this.description);
   creatureClone.removeClass('clone');
-  creatureClone.attr('class', this.title);
+  creatureClone.attr('class', this.keyword);
 }
-
-
-
-
-
-readJson();
-
-checkKeywords();
-
 /*------------------------------------------------------------------------------------------------------------------------------*/
+$('select[name="Creature"]').on('change', function(){
+  let $selection = $(this).val();
+  $('div').hide()
+  $(`div[class="${$selection}"]`).show()
+})
 
+
+$(document).ready(function(){
+  readJson();
+  checkKeywords();
+})
