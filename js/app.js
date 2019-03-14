@@ -52,9 +52,7 @@ function options() {
 Creature.prototype.render = function() {
   $('main').append('<div class="clone"></div>');
   let creatureClone = $('div[class="clone"]');
-
   let creatureHtml = $('#creature-template').html();
-
   creatureClone.html(creatureHtml);
 
   creatureClone.find('h2').text(this.title);
@@ -64,6 +62,7 @@ Creature.prototype.render = function() {
   creatureClone.removeClass('clone');
   creatureClone.attr('class', this.keyword);
 }
+
 /*------------------------------------------------------------------------------------------------------------------------------*/
 $('select[name="Creature"]').on('change', function(){
   let $selection = $(this).val();
