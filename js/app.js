@@ -63,7 +63,6 @@ Creature.prototype.render = function() {
   creatureClone.attr('class', this.keyword);
 }
 
-/*------------------------------------------------------------------------------------------------------------------------------*/
 $('select[name="Creature"]').on('change', function(){
   let $selection = $(this).val();
   $('div').hide()

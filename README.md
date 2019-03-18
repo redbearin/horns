@@ -1,4 +1,6 @@
 
+Pair programming with Trey Herndon for tasks 1 and 2. Individual CSS work. 
+
 Number and name of feature: #1 Display Images
 
 Estimate of time needed to complete: 1 hour
@@ -7,7 +9,7 @@ Start time: 9:45 am
 
 Finish time: 10:45 am
 
-Actual time needed to complete: _____
+Actual time needed to complete: 1 hour
 
 
 Number and name of feature: #2 Filter Images
@@ -18,7 +20,7 @@ Start time: 11:50
 
 Finish time: 1:50pm
 
-Actual time needed to complete: 2 hours on Wed and 1 hour on Thursday.
+Actual time needed to complete: 3 hours
 
 Number and name of feature: # Style
 
@@ -28,7 +30,7 @@ Start time: 11:45
 
 Finish time: 12:45
 
-Actual time needed to complete: _____
+Actual time needed to complete: 2.5 hours
 
 User Story
 copied from the lab md
